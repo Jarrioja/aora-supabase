@@ -4,8 +4,14 @@ import CustomButton from "../components/CustomButton";
 import { Redirect, router } from "expo-router";
 import { images } from "../constants";
 import { StatusBar } from "expo-status-bar";
+import { useGlobalContext } from "../context/GlobalProvider";
 
 export default function App() {
+  const { isLoggedIn, isLoading } = useGlobalContext();
+  if (!isLoading && isLoggedIn) {
+    console.log("isLoggedIn", isLoggedIn);
+    return <Redirect href='/home' />;
+  }
   return (
     <SafeAreaView className=' bg-primary h-full'>
       <ScrollView contentContainerStyle={{ height: "100%" }}>
@@ -23,7 +29,7 @@ export default function App() {
 
           <View className='relative mt-5'>
             <Text className='text-3xl text-white font-bold text-center'>
-              Discover Endless Possibilites with{" "}
+              Discover Endless{"\n"} Possibilites with{" "}
               <Text className='text-secondary-200'>Aora</Text>
             </Text>
             <Image
