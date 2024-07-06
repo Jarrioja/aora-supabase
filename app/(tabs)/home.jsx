@@ -1,13 +1,6 @@
-import {
-  View,
-  Text,
-  FlatList,
-  Image,
-  RefreshControl,
-  Alert,
-} from "react-native";
+import { View, Text, FlatList, Image, RefreshControl } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { getAllPosts, getLatestPosts } from "../../lib/supabase";
 import useSupabase from "../../lib/useSupabase";
@@ -16,11 +9,12 @@ import SearchInput from "../../components/SearchInput";
 import Trending from "../../components/Trending";
 import EmptyState from "../../components/EmptyState";
 import VideoCard from "../../components/VideoCard";
+import { useGlobalContext } from "../../context/GlobalProvider";
 
 const Home = () => {
-  const { data: posts, isLoading, refetch } = useSupabase(getAllPosts);
+  const { user } = useGlobalContext();
+  const { data: posts, refetch } = useSupabase(getAllPosts);
   const { data: latestPost } = useSupabase(getLatestPosts);
-
   const [refreshing, setRefreshing] = useState(false);
 
   const onRefresh = async () => {
@@ -39,10 +33,10 @@ const Home = () => {
             <View className='justify-between flex-row items-start mb-6'>
               <View>
                 <Text className='font-pmedium text-sm text-gray-100'>
-                  Welcome Back
+                  Welcome Back,
                 </Text>
                 <Text className='font-psmeibold text-2xl text-white'>
-                  Jarrrioja
+                  {user?.username}
                 </Text>
               </View>
               <View className='mt-1.5'>

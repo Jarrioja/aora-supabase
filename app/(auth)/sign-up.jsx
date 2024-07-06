@@ -5,9 +5,11 @@ import FormField from "../../components/FormField";
 import { useState } from "react";
 import CustomButton from "../../components/CustomButton";
 import { Link, router } from "expo-router";
-import { signUpWithEmail } from "../../lib/supabase";
+import { signUpWithEmail, getCurrentUser } from "../../lib/supabase";
+import { useGlobalContext } from "../../context/GlobalProvider";
 
 const SignUp = () => {
+  const { setUser, setIsLoggedIn } = useGlobalContext();
   const [form, setForm] = useState({
     username: "",
     email: "",
@@ -21,11 +23,8 @@ const SignUp = () => {
     }
     setIsSubmitting(true);
     try {
-      const result = await signUpWithEmail(
-        form.username,
-        form.email,
-        form.password
-      );
+      await signUpWithEmail(form.username, form.email, form.password);
+
       setUser(result);
       setIsLoggedIn(true);
 

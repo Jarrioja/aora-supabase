@@ -7,7 +7,7 @@ import { Alert } from "react-native";
 import { images } from "../../constants";
 import FormField from "../../components/FormField";
 import CustomButton from "../../components/CustomButton";
-import { signInWithEmail } from "../../lib/supabase";
+import { signInWithEmail, getCurrentUser } from "../../lib/supabase";
 import { useGlobalContext } from "../../context/GlobalProvider";
 
 const SignIn = () => {
@@ -25,10 +25,11 @@ const SignIn = () => {
     }
     setIsSubmitting(true);
     try {
-      const result = await signInWithEmail(form.email, form.password);
+      await signInWithEmail(form.email, form.password);
+      const result = await getCurrentUser();
       setUser(result);
       setIsLoggedIn(true);
-      Alert.alert("Successfully logged in");
+
       router.replace("/home");
     } catch (error) {
       Alert.alert(error.message);

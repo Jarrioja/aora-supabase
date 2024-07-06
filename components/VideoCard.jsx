@@ -1,7 +1,8 @@
 import { View, Text, Image, TouchableOpacity } from "react-native";
-import { icons } from "../constants";
 import { useState } from "react";
 import { Video, ResizeMode } from "expo-av";
+
+import { icons } from "../constants";
 
 const VideoCard = ({
   video: {
@@ -17,7 +18,7 @@ const VideoCard = ({
     <View className='flex-col items-center px-4 mb-14'>
       <View className='flex-row gap-3 items-start'>
         <View className='justify-center items-center flex-row flex-1'>
-          <View className='w-[46px] h-[46px] rounded-lg border border-secondary justify-center items-center p-0.5'>
+          <View className='w-[46px] h-[46px] rounded-full border border-secondary justify-center items-center p-0.5'>
             <Image
               source={{ uri: avatar }}
               className='w-full h-full rounded-full'
