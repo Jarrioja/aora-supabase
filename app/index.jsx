@@ -9,7 +9,6 @@ import { useGlobalContext } from "../context/GlobalProvider";
 export default function App() {
   const { isLoggedIn, isLoading } = useGlobalContext();
   if (!isLoading && isLoggedIn) {
-    console.log("isLoggedIn", isLoggedIn);
     return <Redirect href='/home' />;
   }
   return (
