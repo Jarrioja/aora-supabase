@@ -23,14 +23,19 @@ const SignUp = () => {
     }
     setIsSubmitting(true);
     try {
-      await signUpWithEmail(form.username, form.email, form.password);
+      const result = await signUpWithEmail(
+        form.username,
+        form.email,
+        form.password
+      );
+      console.log("🚀 ~ submit ~ result:", result);
 
       setUser(result);
       setIsLoggedIn(true);
 
       router.replace("/home");
     } catch (error) {
-      Alert.alert(error.message);
+      Alert.alert(`Sign Up Error: ${error.message}`);
     } finally {
       setIsSubmitting(false);
     }
