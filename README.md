@@ -25,8 +25,7 @@
 
 ## <a name="introduction">🤖 Introduction</a>
 
-Built with React Native for seamless user experiences, Animatable for captivating animations, and integrated with the dependable backend systems of ~~Appwrite~~ Supabase,
-this app showcases impressive design and functionality, enabling seamless sharing of AI videos within the community.
+This project is a tutorial for a mobile app built with React Native, using Animatable for captivating animations and integrating Supabase backend systems. The app showcases impressive design and functionality, enabling seamless sharing of AI videos within the community. Tutorial based on content created by JavaScript Mastery on YouTube.
 
 
 ## <a name="tech-stack">⚙️ Tech Stack</a>
