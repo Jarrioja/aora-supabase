@@ -28,7 +28,6 @@ const SignUp = () => {
         form.email,
         form.password
       );
-      console.log("🚀 ~ submit ~ result:", result);
 
       setUser(result);
       setIsLoggedIn(true);
